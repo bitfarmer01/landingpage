@@ -24,7 +24,7 @@ export const Founder: React.FC = () => {
             
             <div className="aspect-square bg-white/5 rounded-[3.5rem] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 shadow-[0_0_100px_rgba(0,0,0,0.5)] border border-white/10 relative">
                <img 
-                 src="../images/rajath.jpg"
+                 src={new URL('../images/rajath.jpg', import.meta.url).href}
                  alt="Rajath Raghu" 
                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                />

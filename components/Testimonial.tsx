@@ -19,7 +19,7 @@ export const Testimonial: React.FC = () => {
         <div className="flex flex-col items-center">
           <div className="w-16 h-16 rounded-full bg-white/10 border border-white/20 p-1 mb-6 overflow-hidden">
             <img
-              src="/images/coltrane.png"
+              src={new URL('../images/coltrane.png', import.meta.url).href}
               alt="Coltrane Kubo"
               className="w-full h-full rounded-full object-cover"
               loading="lazy"
