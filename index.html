@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Ascent | Custom AI Automation & Strategy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #080808;
+        color: #FFFFFF;
+        -webkit-font-smoothing: antialiased;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+      ::selection { background-color: #D4FF3F; color: #000; }
+      
+      /* Hypnotic Background */
+      .bg-pulse-container { position: fixed; inset: 0; z-index: -20; overflow: hidden; pointer-events: none; }
+      .pulse-blob { position: absolute; border-radius: 50%; filter: blur(120px); will-change: transform, opacity; }
+      .blob-1 { top: -10%; left: 10%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(212, 255, 63, 0.08) 0%, transparent 70%); animation: pulse-slow 18s ease-in-out infinite alternate; }
+      .blob-2 { bottom: -5%; right: 5%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%); animation: pulse-slower 25s ease-in-out infinite alternate-reverse; }
+      @keyframes pulse-slow { 0% { transform: scale(1) translate(0, 0); opacity: 0.4; } 50% { transform: scale(1.1) translate(5%, 2%); opacity: 0.7; } 100% { transform: scale(0.95) translate(-2%, -5%); opacity: 0.4; } }
+      @keyframes pulse-slower { 0% { transform: scale(1) translate(0, 0); opacity: 0.3; } 50% { transform: scale(1.2) translate(-8%, 5%); opacity: 0.6; } 100% { transform: scale(0.9) translate(5%, -3%); opacity: 0.3; } }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+  }
+}
+</script>
+</head>
+<body>
+    <div class="bg-pulse-container">
+      <div class="pulse-blob blob-1"></div>
+      <div class="pulse-blob blob-2"></div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="index.tsx"></script>
+</body>
+</html>
