@@ -7,7 +7,7 @@ export const SplitSection: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
         <div>
           <h2 className="text-3xl md:text-4xl font-semibold mb-8 leading-tight">
-            We don't just build websites. We build businesses.
+            We don't just build chatbots. We build businesses.
           </h2>
           <p className="text-lg text-[#475569] mb-10 leading-relaxed">
             Every project begins with a deep dive into your business goals. We partner with you to understand your customers, your challenges, and your vision.

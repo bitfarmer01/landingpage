@@ -93,9 +93,9 @@ export const Footer: React.FC = () => {
             <div>
               <h4 className="font-black text-xs mb-10 uppercase tracking-[0.4em] text-[#D4FF3F]">Social</h4>
               <ul className="space-y-6 text-lg text-white/40 font-bold">
-                <li><a href="#" className="hover:text-white transition-all hover:translate-x-1 inline-block">Twitter</a></li>
+                <li><a href="https://x.com/rajathThinks" className="hover:text-white transition-all hover:translate-x-1 inline-block">Twitter</a></li>
                 <li><a href="#" className="hover:text-white transition-all hover:translate-x-1 inline-block">LinkedIn</a></li>
-                <li><a href="#" className="hover:text-white transition-all hover:translate-x-1 inline-block">GitHub</a></li>
+            
               </ul>
             </div>
           </div>

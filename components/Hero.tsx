@@ -16,7 +16,7 @@ export const Hero: React.FC = () => {
         
         <div className="mb-14 animate-in fade-in slide-in-from-bottom-4 duration-1000">
           <h2 className="relative z-10 text-xl md:text-3xl lg:text-4xl font-medium text-white/40 mb-2 tracking-tight">
-            Because your business isn’t generic,
+             Your business isn’t generic,
           </h2>
           <h1 className="relative z-20 text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-tight whitespace-nowrap drop-shadow-[0_25px_35px_rgba(212,255,63,0.2)] tracking-tighter">
             Your AI <span className="text-[#D4FF3F]">Shouldn’t</span> Be Either.

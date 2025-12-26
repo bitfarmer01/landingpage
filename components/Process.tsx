@@ -17,7 +17,7 @@ const steps = [
   },
   {
     title: "02. Develop",
-    body: "Our engineers build private AI agents grounded in your specific business logic and truth.",
+    body: "Our engineers build private AI automations grounded in your specific business logic and truth.",
     visual: (
       <div className="mt-4 p-4 bg-black rounded-xl text-[9px] font-mono text-white/80 overflow-hidden shadow-lg border border-white/5">
         <div className="flex items-center gap-1.5 mb-2 border-b border-white/10 pb-2">
@@ -34,7 +34,7 @@ const steps = [
   },
   {
     title: "03. Deploy",
-    body: "Zero-friction integration into your existing stack—Slack, HubSpot, Shopify, or Custom APIs.",
+    body: "Zero-friction integration into your existing stack—Slack,Excel, HubSpot, Shopify, or Custom APIs.",
     visual: (
       <div className="mt-4 flex items-center justify-center h-24 bg-white/[0.02] rounded-xl border border-dashed border-white/10">
         <div className="flex items-center gap-3">
@@ -78,7 +78,7 @@ export const Process: React.FC = () => {
           <div className="text-[10px] font-bold text-[#D4FF3F] tracking-[0.3em] uppercase mb-6">Our Engineering Cycle</div>
           <h2 className="text-4xl md:text-7xl font-bold text-white mb-8 tracking-tighter">Built to Outperform.</h2>
           <p className="text-white/40 max-w-2xl mx-auto text-xl leading-relaxed font-medium">
-            Custom automation isn't just a tool—it's a fundamental shift in how your business scales.
+            Custom automation isn't just a tool, it's a fundamental shift in how your business scales.
           </p>
         </div>
         
