@@ -1,8 +1,29 @@
-
-import React from 'react';
-import { Cpu, Twitter, Linkedin, Github, Mail, MapPin } from 'lucide-react';
+import React, { useState } from 'react';
+import { Cpu, Twitter, Linkedin, Github, Mail, MapPin, Copy, Check } from 'lucide-react';
 
 export const Footer: React.FC = () => {
+  const [copied, setCopied] = useState(false);
+  const email = 'rajath@startaiascent.com';
+
+  const handleCopy = async () => {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(email);
+      } else {
+        const textarea = document.createElement('textarea');
+        textarea.value = email;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      }
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // ignore failures silently
+    }
+  };
+
   return (
     <footer className="px-6 pt-40 pb-16 bg-[#050505] border-t border-white/5">
       <div className="max-w-7xl mx-auto">
@@ -18,17 +39,44 @@ export const Footer: React.FC = () => {
               We engineer proprietary intelligence for the most ambitious B2B companies on earth.
             </p>
             <div className="space-y-6">
-               <div className="flex items-center gap-4 text-white/40 hover:text-[#D4FF3F] transition-colors cursor-pointer group">
-                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#D4FF3F]/10 transition-colors">
-                    <Mail size={20} />
-                  </div>
-                  <span className="font-bold tracking-tight">hello@aiascent.ai</span>
+               <div
+                 role="button"
+                 tabIndex={0}
+                 onClick={handleCopy}
+                 onKeyDown={(e) => {
+                   if (e.key === 'Enter' || e.key === ' ') {
+                     e.preventDefault();
+                     handleCopy();
+                   }
+                 }}
+                 aria-label={`Copy email ${email} to clipboard`}
+                 title="Click to copy email"
+                 className="flex items-center gap-4 text-white/40 hover:text-[#D4FF3F] transition-colors cursor-pointer group"
+               >
+                 <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#D4FF3F]/10 transition-colors">
+                   <Mail size={20} />
+                 </div>
+                 <span className="font-bold tracking-tight flex items-center gap-2">
+                   {copied ? (
+                     <>
+                       <Check size={16} className="text-[#D4FF3F]" />
+                       Copied!
+                     </>
+                   ) : (
+                     <>
+                       {email}
+                       <Copy size={14} className="text-white/40 ml-2 hidden md:inline" />
+                     </>
+                   )}
+                 </span>
+                 {/* accessible live region */}
+                 <span className="sr-only" aria-live="polite">{copied ? 'Email copied to clipboard' : ''}</span>
                </div>
                <div className="flex items-center gap-4 text-white/40">
                   <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center">
                     <MapPin size={20} />
                   </div>
-                  <span className="font-bold tracking-tight">San Francisco, CA</span>
+                  <span className="font-bold tracking-tight">NYC</span>
                </div>
             </div>
           </div>

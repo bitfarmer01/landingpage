@@ -1,6 +1,5 @@
 
 import React from 'react';
-
 export const Founder: React.FC = () => {
   return (
     <section className="py-32 px-6 max-w-7xl mx-auto bg-[#080808]">
@@ -25,12 +24,9 @@ export const Founder: React.FC = () => {
             
             <div className="aspect-square bg-white/5 rounded-[3.5rem] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 shadow-[0_0_100px_rgba(0,0,0,0.5)] border border-white/10 relative">
                <img 
-                 src="https://pipe.pigeonhole.ai/api/image/171501/1024/1024/Rajath.webp" 
+                 src="../images/rajath.jpg"
                  alt="Rajath Raghu" 
                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                 onError={(e) => {
-                   (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800";
-                 }}
                />
                <div className="absolute inset-0 bg-gradient-to-t from-[#080808]/40 to-transparent"></div>
             </div>

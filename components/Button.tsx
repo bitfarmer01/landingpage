@@ -34,8 +34,16 @@ export const Button: React.FC<ButtonProps> = ({
     <button 
       className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
       {...props}
+      onClick={(e) => {
+        // If an onClick is already provided, call it after navigating
+        const href = 'https://calendly.com/rajathmobile/discovery-call';
+        window.open(href, '_blank', 'noopener,noreferrer');
+        if (typeof (props as any).onClick === 'function') {
+          (props as any).onClick!(e);
+        }
+      }}
     >
-      {children}
+      {children}       
     </button>
   );
 };

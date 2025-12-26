@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 export const Testimonial: React.FC = () => {
@@ -18,8 +17,13 @@ export const Testimonial: React.FC = () => {
           "Rajath is a phenomenal AI and automation expert. He brought serious <span className="text-[#D4FF3F]">technical depth</span> to my project, and clearly knows his stuff."
         </blockquote>
         <div className="flex flex-col items-center">
-          <div className="w-16 h-16 rounded-full bg-white/10 border border-white/20 p-1 mb-6">
-            <div className="w-full h-full rounded-full bg-gradient-to-tr from-[#D4FF3F] to-emerald-400"></div>
+          <div className="w-16 h-16 rounded-full bg-white/10 border border-white/20 p-1 mb-6 overflow-hidden">
+            <img
+              src="/images/coltrane.png"
+              alt="Coltrane Kubo"
+              className="w-full h-full rounded-full object-cover"
+              loading="lazy"
+            />
           </div>
           <cite className="not-italic">
             <span className="block font-black text-xl text-white mb-2 tracking-tight">Coltrane Kubo</span>
