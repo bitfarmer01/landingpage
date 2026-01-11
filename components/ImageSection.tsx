@@ -5,10 +5,15 @@ export const ImageSection: React.FC = () => {
   return (
     <section className="px-6 py-20 max-w-7xl mx-auto">
       <div className="relative overflow-hidden rounded-3xl group">
+        {/*
+          - Lazy loading defers the image load until it's about to enter the viewport.
+          - This improves initial page load performance by not loading off-screen images.
+        */}
         <img 
           src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=2000" 
           alt="Modern workspace" 
           className="w-full h-[500px] md:h-[700px] object-cover transition-transform duration-1000 group-hover:scale-105"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-black/5"></div>
       </div>
