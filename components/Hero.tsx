@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Button } from './Button';
+import { handleAnchorClick } from '../utils/scroll';
 
 export const Hero: React.FC = () => {
   return (
@@ -28,10 +29,10 @@ export const Hero: React.FC = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-          <Button size="lg" variant="primary" className="shadow-[0_0_50px_rgba(212,255,63,0.3)]">
+          <Button size="lg" variant="primary" className="shadow-[0_0_50px_rgba(212,255,63,0.3)]" onClick={() => window.open('https://calendly.com/rajathmobile/discovery-call', '_blank', 'noopener,noreferrer')}>
             Start Free Consultation
           </Button>
-          <a href="#process" className="group flex items-center gap-4 text-sm font-bold text-white tracking-[0.2em] hover:text-[#D4FF3F] transition-all duration-300 uppercase">
+          <a href="#process" onClick={handleAnchorClick} className="group flex items-center gap-4 text-sm font-bold text-white tracking-[0.2em] hover:text-[#D4FF3F] transition-all duration-300 uppercase">
             The Methodology 
             <span className="group-hover:translate-x-2 transition-transform">→</span>
           </a>

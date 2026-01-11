@@ -11,26 +11,6 @@ import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
 
 const App: React.FC = () => {
-  useEffect(() => {
-    const handleAnchorClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const anchor = target.closest('a');
-      if (anchor && anchor.getAttribute('href')?.startsWith('#')) {
-        const id = anchor.getAttribute('href')?.slice(1);
-        if (id) {
-          const element = document.getElementById(id);
-          if (element) {
-            e.preventDefault();
-            element.scrollIntoView({ behavior: 'smooth' });
-          }
-        }
-      }
-    };
-
-    document.addEventListener('click', handleAnchorClick);
-    return () => document.removeEventListener('click', handleAnchorClick);
-  }, []);
-
   return (
     <div className="relative min-h-screen">
       <Navbar />
