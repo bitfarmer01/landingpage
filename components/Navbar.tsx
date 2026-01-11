@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Cpu } from 'lucide-react';
 import { Button } from './Button';
+import { handleAnchorClick } from '../utils/scroll';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,10 +28,10 @@ export const Navbar: React.FC = () => {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-10">
-          <a href="#process" className="text-sm font-semibold text-white/60 hover:text-[#D4FF3F] transition-colors tracking-tight">Process</a>
-          <a href="#services" className="text-sm font-semibold text-white/60 hover:text-[#D4FF3F] transition-colors tracking-tight">Services</a>
-          <a href="#faq" className="text-sm font-semibold text-white/60 hover:text-[#D4FF3F] transition-colors tracking-tight">FAQ</a>
-          <Button variant="primary" size="sm">Get Started</Button>
+          <a href="#process" onClick={handleAnchorClick} className="text-sm font-semibold text-white/60 hover:text-[#D4FF3F] transition-colors tracking-tight">Process</a>
+          <a href="#services" onClick={handleAnchorClick} className="text-sm font-semibold text-white/60 hover:text-[#D4FF3F] transition-colors tracking-tight">Services</a>
+          <a href="#faq" onClick={handleAnchorClick} className="text-sm font-semibold text-white/60 hover:text-[#D4FF3F] transition-colors tracking-tight">FAQ</a>
+          <Button variant="primary" size="sm" onClick={() => window.open('https://calendly.com/rajathmobile/discovery-call', '_blank', 'noopener,noreferrer')}>Get Started</Button>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -42,10 +43,10 @@ export const Navbar: React.FC = () => {
       {/* Mobile Nav */}
       {isOpen && (
         <div className="md:hidden absolute top-24 left-6 right-6 bg-[#0D0D0D] border border-white/10 p-8 rounded-[2.5rem] flex flex-col gap-8 shadow-2xl animate-in fade-in zoom-in-95 duration-300">
-          <a href="#process" className="text-2xl font-bold text-white" onClick={() => setIsOpen(false)}>Process</a>
-          <a href="#services" className="text-2xl font-bold text-white" onClick={() => setIsOpen(false)}>Services</a>
-          <a href="#faq" className="text-2xl font-bold text-white" onClick={() => setIsOpen(false)}>FAQ</a>
-          <Button variant="primary" size="lg" className="w-full">Book a Free Call</Button>
+          <a href="#process" className="text-2xl font-bold text-white" onClick={(e) => { setIsOpen(false); handleAnchorClick(e); }}>Process</a>
+          <a href="#services" className="text-2xl font-bold text-white" onClick={(e) => { setIsOpen(false); handleAnchorClick(e); }}>Services</a>
+          <a href="#faq" className="text-2xl font-bold text-white" onClick={(e) => { setIsOpen(false); handleAnchorClick(e); }}>FAQ</a>
+          <Button variant="primary" size="lg" className="w-full" onClick={() => window.open('https://calendly.com/rajathmobile/discovery-call', '_blank', 'noopener,noreferrer')}>Book a Free Call</Button>
         </div>
       )}
     </nav>
