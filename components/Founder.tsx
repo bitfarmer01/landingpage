@@ -1,36 +1,79 @@
 
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import { ScrollReveal } from './ScrollReveal';
+
 export const Founder: React.FC = () => {
+  const imageRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const el = imageRef.current;
+    if (!el) return;
+
+    const handleScroll = () => {
+      const rect = el.getBoundingClientRect();
+      const windowH = window.innerHeight;
+      // 0 when element enters viewport from bottom, 1 when fully centered
+      const raw = 1 - (rect.top - windowH * 0.3) / (windowH * 0.6);
+      setScrollProgress(Math.max(0, Math.min(1, raw)));
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const grayscale = 1 - scrollProgress;
+  const scale = 1 + scrollProgress * 0.05;
+  const glowScale = 1 + scrollProgress * 0.15;
+  const glowOpacity = 0.2 + scrollProgress * 0.4;
+
   return (
-    <section className="py-32 px-6 max-w-7xl mx-auto bg-[#080808]">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-        <div className="order-2 md:order-1">
-          <span className="text-sm font-black text-[#D4FF3F] uppercase tracking-[0.3em] mb-6 block">Leadership</span>
-          <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter">Rajath Raghu</h2>
-          <p className="text-xl font-medium text-[#D4FF3F] mb-10 italic opacity-90">AI Automation Architect & Software Engineer</p>
-          <div className="space-y-8 text-white/50 text-xl leading-relaxed font-medium">
-            <p>
-              I bridge the gap between complex engineering and measurable business growth. Having scaled systems at Walmart and high-growth startups, I focus exclusively on high-ROI automation.
-            </p>
-            <p>
-              Today, I help B2B organizations reclaim thousands of hours by building "Thinking Systems" that master their internal data.
-            </p>
-          </div>
-        </div>
-        <div className="order-1 md:order-2">
-          <div className="relative group">
-            {/* Solar Glow Background */}
-            <div className="absolute -inset-10 bg-[#D4FF3F]/10 blur-[100px] rounded-full -z-10 group-hover:scale-110 transition-transform duration-1000 opacity-50"></div>
-            
-            <div className="aspect-square bg-white/5 rounded-[3.5rem] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 shadow-[0_0_100px_rgba(0,0,0,0.5)] border border-white/10 relative">
-               <img 
-                 src={new URL('../images/rajath.jpg', import.meta.url).href}
-                 alt="Rajath Raghu" 
-                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-               />
-               <div className="absolute inset-0 bg-gradient-to-t from-[#080808]/40 to-transparent"></div>
+    <section className="py-16 px-6 relative z-10">
+      <div className="max-w-7xl mx-auto glass-card rounded-[3.5rem] p-10 md:p-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+          <ScrollReveal direction="left" className="order-2 md:order-1">
+            <span className="text-sm font-black uppercase tracking-[0.3em] mb-6 block" style={{ color: 'var(--accent)' }}>Leadership</span>
+            <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter" style={{ color: 'var(--text-primary)' }}>Rajath Raghu</h2>
+            <p className="text-xl font-medium mb-10 italic opacity-90" style={{ color: 'var(--accent)' }}>AI Automation Architect & Software Engineer</p>
+            <div className="space-y-8 text-xl leading-relaxed font-medium" style={{ color: 'var(--text-secondary)' }}>
+              <p>
+                I bridge the gap between complex engineering and measurable business growth. Having scaled systems at Walmart and high-growth startups, I focus exclusively on high-ROI automation.
+              </p>
+              <p>
+                Today, I help B2B organizations reclaim thousands of hours by building "Thinking Systems" that master their internal data.
+              </p>
             </div>
-          </div>
+          </ScrollReveal>
+          <ScrollReveal direction="right" className="order-1 md:order-2">
+            <div ref={imageRef} className="relative">
+              <div
+                className="absolute -inset-10 blur-[100px] rounded-full -z-10 transition-transform duration-700"
+                style={{
+                  background: 'var(--accent-glow)',
+                  transform: `scale(${glowScale})`,
+                  opacity: glowOpacity,
+                }}
+              ></div>
+
+              <div
+                className="aspect-square rounded-[3.5rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.5)] relative transition-all duration-700"
+                style={{
+                  background: 'var(--bg-card)',
+                  border: '1px solid var(--border-color)',
+                  filter: `grayscale(${grayscale})`,
+                }}
+              >
+                <img
+                  src={new URL('../images/rajath.jpg', import.meta.url).href}
+                  alt="Rajath Raghu"
+                  className="w-full h-full object-cover transition-transform duration-700"
+                  style={{ transform: `scale(${scale})` }}
+                />
+                <div className="absolute inset-0" style={{ background: `linear-gradient(to top, var(--bg-primary), transparent 40%)`, opacity: 0.4 }}></div>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

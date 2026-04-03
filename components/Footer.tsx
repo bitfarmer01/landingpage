@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Cpu, Twitter, Linkedin, Github, Mail, MapPin, Copy, Check } from 'lucide-react';
+import { Cpu, Mail, MapPin, Copy, Check } from 'lucide-react';
+import { ScrollReveal } from './ScrollReveal';
 
 export const Footer: React.FC = () => {
   const [copied, setCopied] = useState(false);
@@ -25,91 +26,92 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="px-6 pt-40 pb-16 bg-[#050505] border-t border-white/5">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-20 mb-32">
-          <div className="md:col-span-5">
-            <div className="flex items-center gap-3 mb-10">
-              <div className="w-12 h-12 bg-[#D4FF3F] rounded-xl flex items-center justify-center shadow-[0_0_30px_rgba(212,255,63,0.2)]">
-                <Cpu size={24} className="text-black" />
+    <footer className="px-6 pt-40 pb-16 relative z-10">
+      <div className="max-w-7xl mx-auto glass-card rounded-[3.5rem] p-10 md:p-20">
+        <ScrollReveal>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-20 mb-32">
+            <div className="md:col-span-5">
+              <div className="flex items-center gap-3 mb-10">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#D4FF3F] shadow-[0_0_30px_rgba(212,255,63,0.2)]">
+                  <Cpu size={24} className="text-black" />
+                </div>
+                <span className="font-black text-3xl tracking-tighter" style={{ color: 'var(--text-primary)' }}>AI Ascent</span>
               </div>
-              <span className="font-black text-3xl text-white tracking-tighter">AI Ascent</span>
-            </div>
-            <p className="text-xl text-white/40 leading-relaxed max-w-sm mb-12 font-medium">
-              We engineer proprietary intelligence for the most ambitious B2B companies on earth.
-            </p>
-            <div className="space-y-6">
-               <div
-                 role="button"
-                 tabIndex={0}
-                 onClick={handleCopy}
-                 onKeyDown={(e) => {
-                   if (e.key === 'Enter' || e.key === ' ') {
-                     e.preventDefault();
-                     handleCopy();
-                   }
-                 }}
-                 aria-label={`Copy email ${email} to clipboard`}
-                 title="Click to copy email"
-                 className="flex items-center gap-4 text-white/40 hover:text-[#D4FF3F] transition-colors cursor-pointer group"
-               >
-                 <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#D4FF3F]/10 transition-colors">
-                   <Mail size={20} />
+              <p className="text-xl leading-relaxed max-w-sm mb-12 font-medium" style={{ color: 'var(--text-secondary)' }}>
+                We engineer proprietary intelligence for the most ambitious B2B companies on earth.
+              </p>
+              <div className="space-y-6">
+                 <div
+                   role="button"
+                   tabIndex={0}
+                   onClick={handleCopy}
+                   onKeyDown={(e) => {
+                     if (e.key === 'Enter' || e.key === ' ') {
+                       e.preventDefault();
+                       handleCopy();
+                     }
+                   }}
+                   aria-label={`Copy email ${email} to clipboard`}
+                   title="Click to copy email"
+                   className="flex items-center gap-4 transition-colors cursor-pointer group"
+                   style={{ color: 'var(--text-secondary)' }}
+                 >
+                   <div className="w-12 h-12 rounded-full flex items-center justify-center transition-colors" style={{ background: 'var(--bg-card)' }}>
+                     <Mail size={20} />
+                   </div>
+                   <span className="font-bold tracking-tight flex items-center gap-2">
+                     {copied ? (
+                       <>
+                         <Check size={16} style={{ color: 'var(--accent)' }} />
+                         Copied!
+                       </>
+                     ) : (
+                       <>
+                         {email}
+                         <Copy size={14} className="ml-2 hidden md:inline" style={{ color: 'var(--text-tertiary)' }} />
+                       </>
+                     )}
+                   </span>
+                   <span className="sr-only" aria-live="polite">{copied ? 'Email copied to clipboard' : ''}</span>
                  </div>
-                 <span className="font-bold tracking-tight flex items-center gap-2">
-                   {copied ? (
-                     <>
-                       <Check size={16} className="text-[#D4FF3F]" />
-                       Copied!
-                     </>
-                   ) : (
-                     <>
-                       {email}
-                       <Copy size={14} className="text-white/40 ml-2 hidden md:inline" />
-                     </>
-                   )}
-                 </span>
-                 {/* accessible live region */}
-                 <span className="sr-only" aria-live="polite">{copied ? 'Email copied to clipboard' : ''}</span>
-               </div>
-               <div className="flex items-center gap-4 text-white/40">
-                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center">
-                    <MapPin size={20} />
-                  </div>
-                  <span className="font-bold tracking-tight">NYC</span>
-               </div>
+                 <div className="flex items-center gap-4" style={{ color: 'var(--text-secondary)' }}>
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: 'var(--bg-card)' }}>
+                      <MapPin size={20} />
+                    </div>
+                    <span className="font-bold tracking-tight">NYC</span>
+                 </div>
+              </div>
+            </div>
+
+            <div className="md:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-16">
+              <div>
+                <h4 className="font-black text-xs mb-10 uppercase tracking-[0.4em]" style={{ color: 'var(--accent)' }}>Platform</h4>
+                <ul className="space-y-6 text-lg font-bold" style={{ color: 'var(--text-secondary)' }}>
+                  <li><a href="#process" className="hover:opacity-100 opacity-70 transition-all hover:translate-x-1 inline-block">Process</a></li>
+                  <li><a href="#services" className="hover:opacity-100 opacity-70 transition-all hover:translate-x-1 inline-block">Services</a></li>
+                  <li><a href="#faq" className="hover:opacity-100 opacity-70 transition-all hover:translate-x-1 inline-block">FAQ</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-black text-xs mb-10 uppercase tracking-[0.4em]" style={{ color: 'var(--accent)' }}>Social</h4>
+                <ul className="space-y-6 text-lg font-bold" style={{ color: 'var(--text-secondary)' }}>
+                  <li><a href="https://x.com/rajathThinks" className="hover:opacity-100 opacity-70 transition-all hover:translate-x-1 inline-block">Twitter</a></li>
+                  <li><a href="#" className="hover:opacity-100 opacity-70 transition-all hover:translate-x-1 inline-block">LinkedIn</a></li>
+                </ul>
+              </div>
             </div>
           </div>
-          
-          <div className="md:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-16">
-            <div>
-              <h4 className="font-black text-xs mb-10 uppercase tracking-[0.4em] text-[#D4FF3F]">Platform</h4>
-              <ul className="space-y-6 text-lg text-white/40 font-bold">
-                <li><a href="#process" className="hover:text-white transition-all hover:translate-x-1 inline-block">Process</a></li>
-                <li><a href="#services" className="hover:text-white transition-all hover:translate-x-1 inline-block">Services</a></li>
-                <li><a href="#faq" className="hover:text-white transition-all hover:translate-x-1 inline-block">FAQ</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-black text-xs mb-10 uppercase tracking-[0.4em] text-[#D4FF3F]">Social</h4>
-              <ul className="space-y-6 text-lg text-white/40 font-bold">
-                <li><a href="https://x.com/rajathThinks" className="hover:text-white transition-all hover:translate-x-1 inline-block">Twitter</a></li>
-                <li><a href="#" className="hover:text-white transition-all hover:translate-x-1 inline-block">LinkedIn</a></li>
-            
-              </ul>
-            </div>
-          </div>
-        </div>
-        
-        <div className="flex flex-col md:flex-row justify-between items-center gap-10 py-12 border-t border-white/5 text-sm font-bold tracking-widest uppercase text-white/20">
+        </ScrollReveal>
+
+        <div className="flex flex-col md:flex-row justify-between items-center gap-10 py-12 text-sm font-bold tracking-widest uppercase" style={{ borderTop: '1px solid var(--border-color)', color: 'var(--text-tertiary)' }}>
           <div className="flex items-center gap-10">
             <p>© 2024 AI Ascent.</p>
             <div className="hidden md:flex items-center gap-10">
-               <a href="#" className="hover:text-white transition-colors">Privacy</a>
-               <a href="#" className="hover:text-white transition-colors">Terms</a>
+               <a href="#" className="hover:opacity-100 opacity-70 transition-colors">Privacy</a>
+               <a href="#" className="hover:opacity-100 opacity-70 transition-colors">Terms</a>
             </div>
           </div>
-          <p className="text-[#D4FF3F]/40">Intelligence Grounded in Truth.</p>
+          <p style={{ color: 'var(--accent)', opacity: 0.4 }}>Intelligence Grounded in Truth.</p>
         </div>
       </div>
     </footer>

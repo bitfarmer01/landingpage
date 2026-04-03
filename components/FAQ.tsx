@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { ScrollReveal } from './ScrollReveal';
 
 const faqs = [
   {
@@ -23,21 +24,21 @@ const faqs = [
 
 const FAQItem: React.FC<{ q: string; a: string; isOpen: boolean; onClick: () => void }> = ({ q, a, isOpen, onClick }) => {
   return (
-    <div className="border-b border-white/10 last:border-0">
-      <button 
+    <div style={{ borderBottom: '1px solid var(--border-color)' }} className="last:border-0">
+      <button
         onClick={onClick}
         className="w-full flex justify-between items-center py-10 text-left group focus:outline-none"
         aria-expanded={isOpen}
       >
-        <span className={`text-2xl font-bold transition-colors tracking-tight ${isOpen ? 'text-[#D4FF3F]' : 'text-white/60 group-hover:text-white'}`}>
+        <span className="text-2xl font-bold transition-colors tracking-tight" style={{ color: isOpen ? 'var(--accent)' : 'var(--text-secondary)' }}>
           {q}
         </span>
-        <div className={`p-3 rounded-full bg-white/5 group-hover:bg-[#D4FF3F]/20 transition-all ${isOpen ? 'rotate-180 bg-[#D4FF3F]/10 text-[#D4FF3F]' : 'text-white/40'}`}>
+        <div className={`p-3 rounded-full transition-all ${isOpen ? 'rotate-180' : ''}`} style={{ background: isOpen ? 'var(--accent-dim)' : 'var(--bg-card)', color: isOpen ? 'var(--accent)' : 'var(--text-tertiary)' }}>
           <ChevronDown size={20} />
         </div>
       </button>
       <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[500px] pb-10 opacity-100' : 'max-h-0 opacity-0'}`}>
-        <p className="text-white/40 text-xl leading-relaxed max-w-3xl font-medium">
+        <p className="text-xl leading-relaxed max-w-3xl font-medium" style={{ color: 'var(--text-secondary)' }}>
           {a}
         </p>
       </div>
@@ -49,23 +50,27 @@ export const FAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-40 px-6 bg-[#080808]">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-24">
-          <h2 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tighter">Insights.</h2>
-          <p className="text-white/30 text-xl font-medium">Everything you need to know about custom AI deployment.</p>
-        </div>
-        <div className="bg-white/[0.02] rounded-[3rem] p-6 md:p-16 border border-white/10 shadow-2xl">
-          {faqs.map((item, idx) => (
-            <FAQItem 
-              key={idx} 
-              q={item.q} 
-              a={item.a} 
-              isOpen={openIndex === idx} 
-              onClick={() => setOpenIndex(openIndex === idx ? null : idx)} 
-            />
-          ))}
-        </div>
+    <section id="faq" className="py-16 px-6 relative z-10">
+      <div className="max-w-5xl mx-auto glass-card rounded-[3.5rem] p-10 md:p-20">
+        <ScrollReveal>
+          <div className="text-center mb-24">
+            <h2 className="text-5xl md:text-7xl font-black mb-6 tracking-tighter" style={{ color: 'var(--text-primary)' }}>Insights.</h2>
+            <p className="text-xl font-medium" style={{ color: 'var(--text-tertiary)' }}>Everything you need to know about custom AI deployment.</p>
+          </div>
+        </ScrollReveal>
+        <ScrollReveal delay={150}>
+          <div>
+            {faqs.map((item, idx) => (
+              <FAQItem
+                key={idx}
+                q={item.q}
+                a={item.a}
+                isOpen={openIndex === idx}
+                onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
+              />
+            ))}
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,23 +10,130 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+      /* ── Theme Variables ── */
+      :root {
+        --bg-primary: #080808;
+        --bg-secondary: #0D0D0D;
+        --bg-tertiary: #111111;
+        --bg-card: rgba(255,255,255,0.03);
+        --bg-card-hover: rgba(255,255,255,0.06);
+        --text-primary: #FFFFFF;
+        --text-secondary: rgba(255,255,255,0.50);
+        --text-tertiary: rgba(255,255,255,0.35);
+        --border-color: rgba(255,255,255,0.08);
+        --border-hover: rgba(212,255,63,0.3);
+        --accent: #D4FF3F;
+        --accent-bg: #D4FF3F;
+        --accent-dim: rgba(212,255,63,0.15);
+        --accent-glow: rgba(212,255,63,0.08);
+        --nav-bg: rgba(8,8,8,0.7);
+        --section-divider: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+        --noise-opacity: 0.03;
+      }
+
+      html.light {
+        --bg-primary: #FAFAF7;
+        --bg-secondary: #F0F0EC;
+        --bg-tertiary: #E8E8E2;
+        --bg-card: rgba(0,0,0,0.02);
+        --bg-card-hover: rgba(0,0,0,0.05);
+        --text-primary: #1A1A1A;
+        --text-secondary: rgba(0,0,0,0.55);
+        --text-tertiary: rgba(0,0,0,0.35);
+        --border-color: rgba(0,0,0,0.08);
+        --border-hover: rgba(212,255,63,0.4);
+        --accent: #5C6B00;
+        --accent-bg: #D4FF3F;
+        --accent-dim: rgba(92,107,0,0.12);
+        --accent-glow: rgba(212,255,63,0.08);
+        --nav-bg: rgba(250,250,247,0.8);
+        --section-divider: linear-gradient(90deg, transparent, rgba(0,0,0,0.06), transparent);
+        --noise-opacity: 0.015;
+      }
+
       body {
         font-family: 'Inter', sans-serif;
-        background-color: #080808;
-        color: #FFFFFF;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
         -webkit-font-smoothing: antialiased;
         scroll-behavior: smooth;
         overflow-x: hidden;
+        transition: background-color 0.5s ease, color 0.5s ease;
       }
-      ::selection { background-color: #D4FF3F; color: #000; }
-      
-      /* Hypnotic Background */
-      .bg-pulse-container { position: fixed; inset: 0; z-index: -20; overflow: hidden; pointer-events: none; }
+
+      ::selection { background-color: var(--accent); color: var(--bg-primary); }
+
+      /* ── Noise Texture Overlay ── */
+      .noise-overlay {
+        position: fixed; inset: 0; z-index: 9999;
+        pointer-events: none;
+        opacity: var(--noise-opacity);
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        background-repeat: repeat;
+        background-size: 128px 128px;
+      }
+
+      /* ── Section Divider ── */
+      .section-divider {
+        height: 1px;
+        background: var(--section-divider);
+        margin: 0 auto;
+        max-width: 80%;
+      }
+
+      /* ── Text Shimmer ── */
+      @keyframes shimmer {
+        0% { background-position: -200% center; }
+        100% { background-position: 200% center; }
+      }
+      .text-shimmer {
+        background: linear-gradient(90deg, var(--accent), #fff, var(--accent));
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: shimmer 6s linear infinite;
+      }
+      html.light .text-shimmer {
+        background: linear-gradient(90deg, #5C6B00, #8A9F00, #5C6B00);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* ── Hypnotic Background ── */
+      .bg-pulse-container { position: fixed; inset: 0; z-index: -20; overflow: hidden; pointer-events: none; transition: opacity 0.5s; }
+      html.light .bg-pulse-container { opacity: 0.5; }
       .pulse-blob { position: absolute; border-radius: 50%; filter: blur(120px); will-change: transform, opacity; }
       .blob-1 { top: -10%; left: 10%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(212, 255, 63, 0.08) 0%, transparent 70%); animation: pulse-slow 18s ease-in-out infinite alternate; }
       .blob-2 { bottom: -5%; right: 5%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%); animation: pulse-slower 25s ease-in-out infinite alternate-reverse; }
+      html.light .blob-1 { background: radial-gradient(circle, rgba(212, 255, 63, 0.06) 0%, transparent 70%); }
+      html.light .blob-2 { background: radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, transparent 70%); }
       @keyframes pulse-slow { 0% { transform: scale(1) translate(0, 0); opacity: 0.4; } 50% { transform: scale(1.1) translate(5%, 2%); opacity: 0.7; } 100% { transform: scale(0.95) translate(-2%, -5%); opacity: 0.4; } }
       @keyframes pulse-slower { 0% { transform: scale(1) translate(0, 0); opacity: 0.3; } 50% { transform: scale(1.2) translate(-8%, 5%); opacity: 0.6; } 100% { transform: scale(0.9) translate(5%, -3%); opacity: 0.3; } }
+
+      /* ── Floating orb animations ── */
+      @keyframes orb-float-1 { 0%, 100% { transform: translate(0, 0); } 33% { transform: translate(30px, -40px); } 66% { transform: translate(-20px, 20px); } }
+      @keyframes orb-float-2 { 0%, 100% { transform: translate(0, 0); } 33% { transform: translate(-40px, 30px); } 66% { transform: translate(25px, -15px); } }
+      @keyframes orb-float-3 { 0%, 100% { transform: translate(0, 0); } 33% { transform: translate(20px, 35px); } 66% { transform: translate(-35px, -25px); } }
+      @keyframes orb-float-4 { 0%, 100% { transform: translate(0, 0); } 33% { transform: translate(-25px, -30px); } 66% { transform: translate(40px, 15px); } }
+      @keyframes orb-float-5 { 0%, 100% { transform: translate(0, 0); } 33% { transform: translate(35px, 20px); } 66% { transform: translate(-15px, -35px); } }
+
+      /* ── Glassmorphism card base ── */
+      .glass-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      }
+      .glass-card:hover {
+        background: var(--bg-card-hover);
+        border-color: var(--border-hover);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        transform: translateY(-2px);
+      }
     </style>
 <script type="importmap">
 {
@@ -40,6 +147,7 @@
 </script>
 </head>
 <body>
+    <div class="noise-overlay"></div>
     <div class="bg-pulse-container">
       <div class="pulse-blob blob-1"></div>
       <div class="pulse-blob blob-2"></div>
