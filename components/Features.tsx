@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Database, Search, TrendingUp, ShieldCheck, FileCheck, ArrowRight } from 'lucide-react';
+import { ScrollReveal } from './ScrollReveal';
 
 const featureList = [
   {
@@ -32,48 +33,52 @@ const featureList = [
 
 export const Features: React.FC = () => {
   return (
-    <section id="services" className="bg-[#080808] py-48 px-6 relative overflow-hidden">
-      {/* Decorative Glow */}
-      <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-[#D4FF3F]/5 blur-[120px] rounded-full pointer-events-none"></div>
+    <section id="services" className="py-16 px-6 relative z-10 overflow-hidden">
+      <div className="max-w-7xl mx-auto glass-card rounded-[3.5rem] p-8 md:p-14">
+        <ScrollReveal>
+          <div className="max-w-4xl mb-16">
+            <div className="text-xs font-bold tracking-[0.4em] uppercase mb-6" style={{ color: 'var(--accent)' }}>Service Spectrum</div>
+            <h2 className="text-4xl md:text-6xl font-extrabold mb-6 leading-[0.9] tracking-tighter" style={{ color: 'var(--text-primary)' }}>
+              Total Intelligence. <br />
+              No Compromise.
+            </h2>
+            <p className="text-xl leading-relaxed max-w-2xl font-medium" style={{ color: 'var(--text-secondary)' }}>
+              We bridge the gap between raw data and actionable profit with surgical precision.
+            </p>
+          </div>
+        </ScrollReveal>
 
-      <div className="max-w-7xl mx-auto">
-        <div className="max-w-4xl mb-32">
-          <div className="text-xs font-bold text-[#D4FF3F] tracking-[0.4em] uppercase mb-8">Service Spectrum</div>
-          <h2 className="text-5xl md:text-8xl font-extrabold text-white mb-10 leading-[0.9] tracking-tighter">
-            Total Intelligence. <br />
-            No Compromise.
-          </h2>
-          <p className="text-white/40 text-2xl leading-relaxed max-w-2xl font-medium">
-            We bridge the gap between raw data and actionable profit with surgical precision.
-          </p>
-        </div>
-        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {featureList.map((f, i) => (
-            <div key={i} className="group p-10 bg-white/[0.02] border border-white/10 rounded-[2.5rem] hover:bg-white/[0.04] hover:border-[#D4FF3F]/30 transition-all duration-500 hover:-translate-y-2">
-              <div className="w-16 h-16 flex items-center justify-center bg-white/5 rounded-2xl mb-10 text-[#D4FF3F] border border-white/5 group-hover:bg-[#D4FF3F] group-hover:text-black transition-all duration-500 shadow-xl">
-                {f.icon}
+            <ScrollReveal key={i} delay={i * 80}>
+              <div className="group glass-card p-10 rounded-[3rem] transition-all duration-500">
+                <div className="w-16 h-16 flex items-center justify-center rounded-2xl mb-10 transition-all duration-500 shadow-xl" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--accent)' }}>
+                  <div className="group-hover:scale-110 transition-transform duration-300">
+                    {f.icon}
+                  </div>
+                </div>
+                <h3 className="text-2xl font-bold mb-6 tracking-tight" style={{ color: 'var(--text-primary)' }}>{f.title}</h3>
+                <p className="leading-relaxed text-lg font-medium transition-colors" style={{ color: 'var(--text-secondary)' }}>
+                  {f.description}
+                </p>
               </div>
-              <h3 className="text-2xl font-bold mb-6 text-white tracking-tight">{f.title}</h3>
-              <p className="text-white/40 leading-relaxed text-lg font-medium group-hover:text-white/60 transition-colors">
-                {f.description}
-              </p>
-            </div>
+            </ScrollReveal>
           ))}
-          
-          <div className="bg-[#D4FF3F] text-black rounded-[2.5rem] p-12 flex flex-col justify-between group overflow-hidden relative hover:scale-[1.02] transition-transform duration-500 shadow-[0_0_80px_rgba(212,255,63,0.2)]">
-            <div className="relative z-10">
-              <h3 className="text-4xl font-black mb-6 tracking-tighter leading-none">Ready to automate?</h3>
-              <p className="text-black/70 text-lg leading-snug font-bold">
-                Join the top 1% of B2B companies leveraging custom data models for extreme efficiency.
-              </p>
+
+          <ScrollReveal delay={featureList.length * 80}>
+            <div className="rounded-[3rem] p-12 flex flex-col justify-between group overflow-hidden relative hover:scale-[1.02] transition-transform duration-500 h-full bg-[#D4FF3F] text-[#1A1A1A] shadow-[0_0_80px_rgba(212,255,63,0.2)]">
+              <div className="relative z-10">
+                <h3 className="text-4xl font-black mb-6 tracking-tighter leading-none">Ready to automate?</h3>
+                <p className="text-lg leading-snug font-bold text-black/70">
+                  Join the top 1% of B2B companies leveraging custom data models for extreme efficiency.
+                </p>
+              </div>
+              <div className="flex items-center gap-4 font-black group-hover:translate-x-4 transition-transform relative z-10 uppercase text-sm tracking-widest pt-12">
+                Let's build <ArrowRight size={24} />
+              </div>
+              <div className="absolute -bottom-10 -right-10 w-48 h-48 rounded-full blur-3xl bg-black/10"></div>
             </div>
-            <div className="flex items-center gap-4 font-black text-black group-hover:translate-x-4 transition-transform relative z-10 uppercase text-sm tracking-widest pt-12">
-              Let's build <ArrowRight size={24} />
-            </div>
-            {/* Abstract design elements */}
-            <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-black/10 rounded-full blur-3xl"></div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
