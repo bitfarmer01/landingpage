@@ -55,7 +55,7 @@ export const Testimonial: React.FC = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-16 px-6 relative z-10">
+    <section id="testimonials" ref={sectionRef} className="py-16 px-6 relative z-10">
       <div className="max-w-5xl mx-auto glass-card rounded-[3.5rem] p-10 md:p-20 relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] rounded-full blur-[100px] pointer-events-none" style={{ background: 'var(--accent-glow)' }}></div>
 

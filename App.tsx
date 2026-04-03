@@ -11,33 +11,27 @@ import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
 import { ParticleField } from './components/ParticleField';
 import { FloatingOrbs } from './components/FloatingOrbs';
-
-const SectionDivider = () => <div className="section-divider" />;
+import { ScrollNav } from './components/ScrollNav';
 
 const App: React.FC = () => {
   return (
-    <div className="relative min-h-screen">
+    <div data-scroll-container className="relative h-screen overflow-y-auto" style={{ scrollSnapType: 'y mandatory', scrollBehavior: 'smooth' }}>
       <ParticleField />
       <FloatingOrbs />
+      <ScrollNav />
       <Navbar />
 
       <main>
-        <Hero />
-        <SectionDivider />
-        <Process />
-        <SectionDivider />
-        <Features />
-        <SectionDivider />
-        <Testimonial />
-        <SectionDivider />
-        <Founder />
-        <SectionDivider />
-        <FAQ />
-        <SectionDivider />
-        <CTA />
+        <div style={{ scrollSnapAlign: 'start' }}><Hero /></div>
+        <div style={{ scrollSnapAlign: 'start', scrollMarginTop: '80px' }}><Process /></div>
+        <div style={{ scrollSnapAlign: 'start', scrollMarginTop: '80px' }}><Features /></div>
+        <div style={{ scrollSnapAlign: 'start', scrollMarginTop: '80px' }}><Testimonial /></div>
+        <div style={{ scrollSnapAlign: 'start', scrollMarginTop: '80px' }}><Founder /></div>
+        <div style={{ scrollSnapAlign: 'start', scrollMarginTop: '80px' }}><FAQ /></div>
+        <div style={{ scrollSnapAlign: 'start', scrollMarginTop: '80px' }}><CTA /></div>
       </main>
 
-      <Footer />
+      <div style={{ scrollSnapAlign: 'start' }}><Footer /></div>
     </div>
   );
 };

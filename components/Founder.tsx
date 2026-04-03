@@ -13,14 +13,14 @@ export const Founder: React.FC = () => {
     const handleScroll = () => {
       const rect = el.getBoundingClientRect();
       const windowH = window.innerHeight;
-      // 0 when element enters viewport from bottom, 1 when fully centered
       const raw = 1 - (rect.top - windowH * 0.3) / (windowH * 0.6);
       setScrollProgress(Math.max(0, Math.min(1, raw)));
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    const container = document.querySelector('[data-scroll-container]') || window;
+    container.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
   }, []);
 
   const grayscale = 1 - scrollProgress;
@@ -29,7 +29,7 @@ export const Founder: React.FC = () => {
   const glowOpacity = 0.2 + scrollProgress * 0.4;
 
   return (
-    <section className="py-16 px-6 relative z-10">
+    <section id="leadership" className="py-16 px-6 relative z-10">
       <div className="max-w-7xl mx-auto glass-card rounded-[3.5rem] p-10 md:p-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
           <ScrollReveal direction="left" className="order-2 md:order-1">

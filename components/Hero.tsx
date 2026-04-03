@@ -4,7 +4,7 @@ import { Button } from './Button';
 import { handleAnchorClick } from '../utils/scroll';
 export const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden pt-32 pb-20">
+    <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden pt-32 pb-20">
       <div className={`absolute top-[20%] left-1/2 -translate-x-1/2 w-[40%] h-[40%] blur-[150px] rounded-full -z-10 animate-pulse duration-[12000ms] ${'bg-[#D4FF3F]/5'}`}></div>
 
       <div className="max-w-7xl mx-auto text-center relative z-10">

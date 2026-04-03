@@ -11,11 +11,14 @@ export const Navbar: React.FC = () => {
   const { theme, toggle } = useTheme();
 
   useEffect(() => {
+    const container = document.querySelector('[data-scroll-container]') as HTMLElement | null;
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const scrollTop = container ? container.scrollTop : window.scrollY;
+      setScrolled(scrollTop > 20);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const target = container || window;
+    target.addEventListener('scroll', handleScroll, { passive: true });
+    return () => target.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (

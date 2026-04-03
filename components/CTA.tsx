@@ -5,7 +5,7 @@ import { ScrollReveal } from './ScrollReveal';
 
 export const CTA: React.FC = () => {
   return (
-    <section className="px-6 py-40 relative z-10">
+    <section id="cta" className="px-6 py-40 relative z-10">
       <ScrollReveal>
         <div className="max-w-7xl mx-auto glass-card rounded-[3.5rem] py-32 px-10 md:px-20 text-center relative overflow-hidden">
           <div className="absolute top-0 right-0 w-[40%] h-full blur-[120px] -z-0" style={{ background: 'var(--accent-glow)' }}></div>

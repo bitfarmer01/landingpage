@@ -35,18 +35,9 @@ export const Features: React.FC = () => {
   return (
     <section id="services" className="py-16 px-6 relative z-10 overflow-hidden">
       <div className="max-w-7xl mx-auto glass-card rounded-[3.5rem] p-8 md:p-14">
-        <ScrollReveal>
-          <div className="max-w-4xl mb-16">
-            <div className="text-xs font-bold tracking-[0.4em] uppercase mb-6" style={{ color: 'var(--accent)' }}>Service Spectrum</div>
-            <h2 className="text-4xl md:text-6xl font-extrabold mb-6 leading-[0.9] tracking-tighter" style={{ color: 'var(--text-primary)' }}>
-              Total Intelligence. <br />
-              No Compromise.
-            </h2>
-            <p className="text-xl leading-relaxed max-w-2xl font-medium" style={{ color: 'var(--text-secondary)' }}>
-              We bridge the gap between raw data and actionable profit with surgical precision.
-            </p>
-          </div>
-        </ScrollReveal>
+
+
+        <ScrollReveal/>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {featureList.map((f, i) => (
