@@ -80,7 +80,7 @@ export const ParticleField: React.FC = () => {
 
       // Decay the flash
       if (flash > 0) {
-        flashRef.current = Math.max(0, flash - 0.015);
+        flashRef.current = Math.max(0, flash - 0.06);
       }
 
       const particleColor = isLight ? '180, 210, 30' : '212, 255, 63';
@@ -104,12 +104,12 @@ export const ParticleField: React.FC = () => {
         }
 
         // During flash, add an outward burst from center
-        if (flash > 0.3) {
+        if (flash > 0.5) {
           const cx = p.x - w / 2;
           const cy = p.y - h / 2;
           const cd = Math.sqrt(cx * cx + cy * cy) || 1;
-          p.vx += (cx / cd) * flash * 0.8;
-          p.vy += (cy / cd) * flash * 0.8;
+          p.vx += (cx / cd) * flash * 0.2;
+          p.vy += (cy / cd) * flash * 0.2;
         }
 
         p.vx *= 0.995;
@@ -192,7 +192,7 @@ export const ParticleField: React.FC = () => {
       // Flash overlay — "lights on/off" effect
       if (flash > 0) {
         const flashColor = isLight ? '255, 255, 245' : '212, 255, 63';
-        const flashAlpha = flash * (isLight ? 0.3 : 0.08);
+        const flashAlpha = flash * (isLight ? 0.1 : 0.03);
         ctx.fillStyle = `rgba(${flashColor}, ${flashAlpha})`;
         ctx.fillRect(0, 0, w, h);
       }
