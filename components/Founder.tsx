@@ -29,9 +29,43 @@ export const Founder: React.FC = () => {
   const glowOpacity = 0.2 + scrollProgress * 0.4;
 
   return (
-    <section id="leadership" className="py-16 px-6 relative z-10">
-      <div className="max-w-7xl mx-auto glass-card rounded-[3.5rem] p-10 md:p-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+    <section id="leadership" className="py-8 sm:py-16 px-6 relative z-10">
+      <div className="max-w-7xl mx-auto glass-card rounded-2xl sm:rounded-[3.5rem] p-5 sm:p-10 md:p-20">
+        {/* Mobile: compact horizontal layout */}
+        <div className="sm:hidden">
+          <ScrollReveal>
+            <div className="flex items-center gap-4 mb-4">
+              <div ref={imageRef} className="relative flex-shrink-0">
+                <div
+                  className="w-20 h-20 rounded-2xl overflow-hidden shadow-lg relative"
+                  style={{
+                    background: 'var(--bg-card)',
+                    border: '1px solid var(--border-color)',
+                    filter: `grayscale(${grayscale})`,
+                  }}
+                >
+                  <img
+                    src={new URL('../images/rajath.jpg', import.meta.url).href}
+                    alt="Rajath Raghu"
+                    className="w-full h-full object-cover"
+                    style={{ transform: `scale(${scale})` }}
+                  />
+                </div>
+              </div>
+              <div>
+                <span className="text-[9px] font-black uppercase tracking-[0.3em] block" style={{ color: 'var(--accent)' }}>Leadership</span>
+                <h2 className="text-xl font-black tracking-tighter" style={{ color: 'var(--text-primary)' }}>Rajath Raghu</h2>
+                <p className="text-xs font-medium italic opacity-90" style={{ color: 'var(--accent)' }}>AI Architect · Ex-Walmart</p>
+              </div>
+            </div>
+            <p className="text-sm leading-relaxed font-medium" style={{ color: 'var(--text-secondary)' }}>
+              Scaled systems at Walmart and high-growth startups. Today I help B2B orgs reclaim thousands of hours with custom AI that masters their internal data.
+            </p>
+          </ScrollReveal>
+        </div>
+
+        {/* Desktop: full layout */}
+        <div className="hidden sm:grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
           <ScrollReveal direction="left" className="order-2 md:order-1">
             <span className="text-sm font-black uppercase tracking-[0.3em] mb-6 block" style={{ color: 'var(--accent)' }}>Leadership</span>
             <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter" style={{ color: 'var(--text-primary)' }}>Rajath Raghu</h2>
@@ -46,7 +80,7 @@ export const Founder: React.FC = () => {
             </div>
           </ScrollReveal>
           <ScrollReveal direction="right" className="order-1 md:order-2">
-            <div ref={imageRef} className="relative">
+            <div className="relative">
               <div
                 className="absolute -inset-10 blur-[100px] rounded-full -z-10 transition-transform duration-700"
                 style={{

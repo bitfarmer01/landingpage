@@ -39,7 +39,8 @@ export const ParticleField: React.FC = () => {
     let w = (canvas.width = window.innerWidth);
     let h = (canvas.height = window.innerHeight);
 
-    const PARTICLE_COUNT = Math.min(120, Math.floor((w * h) / 15000));
+    const isMobile = w < 768;
+    const PARTICLE_COUNT = isMobile ? Math.min(60, Math.floor((w * h) / 15000)) : Math.min(120, Math.floor((w * h) / 15000));
     const CONNECTION_DIST = 150;
     const MOUSE_RADIUS = 200;
 

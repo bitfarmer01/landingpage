@@ -26,10 +26,10 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="px-6 pt-40 pb-16 relative z-10">
-      <div className="max-w-7xl mx-auto glass-card rounded-[3.5rem] p-10 md:p-20">
+    <footer className="px-6 pt-8 sm:pt-40 pb-8 sm:pb-16 relative z-10">
+      <div className="max-w-7xl mx-auto glass-card rounded-2xl sm:rounded-[3.5rem] p-5 sm:p-10 md:p-20">
         <ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-20 mb-32">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 sm:gap-16 md:gap-20 mb-16 sm:mb-24 md:mb-32">
             <div className="md:col-span-5">
               <div className="flex items-center gap-3 mb-10">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#D4FF3F] shadow-[0_0_30px_rgba(212,255,63,0.2)]">
@@ -83,10 +83,10 @@ export const Footer: React.FC = () => {
               </div>
             </div>
 
-            <div className="md:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-16">
+            <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 md:gap-16">
               <div>
                 <h4 className="font-black text-xs mb-10 uppercase tracking-[0.4em]" style={{ color: 'var(--accent)' }}>Platform</h4>
-                <ul className="space-y-6 text-lg font-bold" style={{ color: 'var(--text-secondary)' }}>
+                <ul className="space-y-4 sm:space-y-6 text-base sm:text-lg font-bold" style={{ color: 'var(--text-secondary)' }}>
                   <li><a href="#process" className="hover:opacity-100 opacity-70 transition-all hover:translate-x-1 inline-block">Process</a></li>
                   <li><a href="#services" className="hover:opacity-100 opacity-70 transition-all hover:translate-x-1 inline-block">Services</a></li>
                   <li><a href="#faq" className="hover:opacity-100 opacity-70 transition-all hover:translate-x-1 inline-block">FAQ</a></li>
@@ -94,7 +94,7 @@ export const Footer: React.FC = () => {
               </div>
               <div>
                 <h4 className="font-black text-xs mb-10 uppercase tracking-[0.4em]" style={{ color: 'var(--accent)' }}>Social</h4>
-                <ul className="space-y-6 text-lg font-bold" style={{ color: 'var(--text-secondary)' }}>
+                <ul className="space-y-4 sm:space-y-6 text-base sm:text-lg font-bold" style={{ color: 'var(--text-secondary)' }}>
                   <li><a href="https://x.com/rajathThinks" className="hover:opacity-100 opacity-70 transition-all hover:translate-x-1 inline-block">Twitter</a></li>
                   <li><a href="#" className="hover:opacity-100 opacity-70 transition-all hover:translate-x-1 inline-block">LinkedIn</a></li>
                 </ul>
@@ -103,7 +103,7 @@ export const Footer: React.FC = () => {
           </div>
         </ScrollReveal>
 
-        <div className="flex flex-col md:flex-row justify-between items-center gap-10 py-12 text-sm font-bold tracking-widest uppercase" style={{ borderTop: '1px solid var(--border-color)', color: 'var(--text-tertiary)' }}>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-10 py-8 sm:py-12 text-sm font-bold tracking-widest uppercase" style={{ borderTop: '1px solid var(--border-color)', color: 'var(--text-tertiary)' }}>
           <div className="flex items-center gap-10">
             <p>© 2024 AI Ascent.</p>
             <div className="hidden md:flex items-center gap-10">

@@ -65,7 +65,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Nav */}
       {isOpen && (
-        <div className="md:hidden absolute top-24 left-6 right-6 glass-card p-8 rounded-[3.5rem] flex flex-col gap-8 shadow-2xl animate-in fade-in zoom-in-95 duration-300">
+        <div className="md:hidden absolute top-24 left-6 right-6 glass-card p-4 sm:p-6 md:p-8 rounded-[2rem] sm:rounded-[3.5rem] flex flex-col gap-8 shadow-2xl animate-in fade-in zoom-in-95 duration-300">
           <a href="#process" className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }} onClick={(e) => { setIsOpen(false); handleAnchorClick(e); }}>Process</a>
           <a href="#services" className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }} onClick={(e) => { setIsOpen(false); handleAnchorClick(e); }}>Services</a>
           <a href="#faq" className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }} onClick={(e) => { setIsOpen(false); handleAnchorClick(e); }}>FAQ</a>

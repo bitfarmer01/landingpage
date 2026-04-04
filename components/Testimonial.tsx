@@ -1,20 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ScrollReveal } from './ScrollReveal';
-
-const testimonials = [
-  {
-    name: "Coltrane Kubo",
-    title: "Co-founder @ Aidgentic",
-    quote: "Rajath is a phenomenal AI and automation expert. He brought serious <highlight>technical depth</highlight> to my project, and clearly knows his stuff.",
-    image: "coltrane.png",
-  },
-  {
-    name: "Zak Hodgson",
-    title: "CEO @ Sundale Systems",
-    quote: "Delivered faster than expected, explained in plain language, and it <highlight>just works</highlight>. Bounce rates are down and we're saving hours every week.",
-    image: "zak.png",
-  },
-];
+import { testimonials } from '../data/testimonials';
 
 export const Testimonial: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -55,14 +41,14 @@ export const Testimonial: React.FC = () => {
   };
 
   return (
-    <section id="testimonials" ref={sectionRef} className="py-16 px-6 relative z-10">
-      <div className="max-w-5xl mx-auto glass-card rounded-[3.5rem] p-10 md:p-20 relative overflow-hidden">
+    <section id="testimonials" ref={sectionRef} className="py-8 sm:py-16 px-6 relative z-10">
+      <div className="max-w-5xl mx-auto glass-card rounded-2xl sm:rounded-[3.5rem] p-5 sm:p-10 md:p-20 relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] rounded-full blur-[100px] pointer-events-none" style={{ background: 'var(--accent-glow)' }}></div>
 
         <ScrollReveal>
           <div className="text-center mb-10 relative z-10">
             <div className="text-[10px] font-bold tracking-[0.3em] uppercase mb-6" style={{ color: 'var(--accent)' }}>What Our Clients Say</div>
-            <div className="flex justify-center gap-1 mb-4" style={{ color: 'var(--accent)' }}>
+            <div className="flex justify-center gap-1 mb-4 text-amber-400">
               {[...Array(5)].map((_, i) => (
                 <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                   <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
@@ -97,7 +83,7 @@ export const Testimonial: React.FC = () => {
                 </div>
               </div>
 
-              <blockquote className="text-2xl md:text-4xl font-bold leading-[1.3] tracking-tight text-center [text-wrap:balance]" style={{ color: 'var(--text-primary)' }}>
+              <blockquote className="text-xl sm:text-2xl md:text-4xl font-bold leading-[1.3] tracking-tight text-center [text-wrap:balance]" style={{ color: 'var(--text-primary)' }}>
                 "{renderQuote(testimonial.quote)}"
               </blockquote>
             </div>
@@ -123,7 +109,7 @@ export const Testimonial: React.FC = () => {
           <div className="flex items-center justify-center gap-4">
             <button
               onClick={goToPrev}
-              className="w-10 h-10 rounded-full transition-all duration-300 flex items-center justify-center hover:scale-110"
+              className="w-12 h-12 rounded-full transition-all duration-300 flex items-center justify-center hover:scale-110"
               style={{ border: '1px solid var(--border-color)', background: 'var(--bg-card)' }}
               aria-label="Previous testimonial"
             >
@@ -133,7 +119,7 @@ export const Testimonial: React.FC = () => {
             </button>
             <button
               onClick={goToNext}
-              className="w-10 h-10 rounded-full transition-all duration-300 flex items-center justify-center hover:scale-110"
+              className="w-12 h-12 rounded-full transition-all duration-300 flex items-center justify-center hover:scale-110"
               style={{ border: '1px solid var(--border-color)', background: 'var(--bg-card)' }}
               aria-label="Next testimonial"
             >
