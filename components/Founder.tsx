@@ -55,11 +55,11 @@ export const Founder: React.FC = () => {
               <div>
                 <span className="text-[9px] font-black uppercase tracking-[0.3em] block" style={{ color: 'var(--accent)' }}>Leadership</span>
                 <h2 className="text-xl font-black tracking-tighter" style={{ color: 'var(--text-primary)' }}>Rajath Raghu</h2>
-                <p className="text-xs font-medium italic opacity-90" style={{ color: 'var(--accent)' }}>AI Architect · Ex-Walmart</p>
+                <p className="text-xs font-medium italic opacity-90" style={{ color: 'var(--accent)' }}>AI Architect · Software Engineer</p>
               </div>
             </div>
             <p className="text-sm leading-relaxed font-medium" style={{ color: 'var(--text-secondary)' }}>
-              Scaled systems at Walmart and high-growth startups. Today I help B2B orgs reclaim thousands of hours with custom AI that masters their internal data.
+              Scaled systems at enterprise and high-growth startups. Today I help B2B orgs reclaim thousands of hours with custom AI that masters their internal data.
             </p>
           </ScrollReveal>
         </div>

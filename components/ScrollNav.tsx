@@ -53,7 +53,7 @@ export const ScrollNav: React.FC = () => {
 
   return (
     <div
-      className="fixed right-6 top-1/2 -translate-y-1/2 z-40 transition-all duration-500 hidden lg:flex flex-col items-end gap-1"
+      className="fixed right-10 top-1/2 -translate-y-1/2 z-40 transition-all duration-500 hidden lg:flex flex-col items-end gap-1"
       style={{ opacity: visible ? 1 : 0, pointerEvents: visible ? 'auto' : 'none' }}
     >
       {sections.map((section) => {

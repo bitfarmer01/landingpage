@@ -74,13 +74,13 @@ export const Process: React.FC = () => {
   ];
 
   return (
-    <section id="process" className="py-8 sm:py-16 px-6 relative z-10">
-      <div className="max-w-7xl mx-auto glass-card rounded-2xl sm:rounded-[3.5rem] p-5 sm:p-10 md:p-20">
+    <section id="process" className="py-8 sm:py-10 lg:py-16 px-6 relative z-10">
+      <div className="max-w-7xl mx-auto glass-card rounded-2xl sm:rounded-[3.5rem] p-5 sm:p-10 md:p-12 lg:p-16 xl:p-20">
         <ScrollReveal>
-          <div className="text-center mb-8 sm:mb-16 md:mb-24">
+          <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
             <div className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4 sm:mb-6" style={{ color: 'var(--accent)' }}>Our Engineering Cycle</div>
-            <h2 className="text-2xl sm:text-4xl md:text-7xl font-bold mb-4 sm:mb-8 tracking-tighter" style={{ color: 'var(--text-primary)' }}>Built to Outperform.</h2>
-            <p className="hidden sm:block max-w-2xl mx-auto text-xl leading-relaxed font-medium" style={{ color: 'var(--text-secondary)' }}>
+            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 tracking-tighter" style={{ color: 'var(--text-primary)' }}>Built to Outperform.</h2>
+            <p className="hidden lg:block max-w-2xl mx-auto text-xl leading-relaxed font-medium" style={{ color: 'var(--text-secondary)' }}>
               Custom automation isn't just a tool, it's a fundamental shift in how your business scales.
             </p>
           </div>
@@ -104,13 +104,13 @@ export const Process: React.FC = () => {
         </div>
 
         {/* Desktop: full cards with visuals */}
-        <div className="hidden sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="hidden sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-6">
           {steps.map((step, idx) => (
             <ScrollReveal key={idx} delay={idx * 100} className="h-full">
               <div className="group relative h-full">
-                <div className="glass-card rounded-[3rem] p-8 md:p-10 h-full flex flex-col transition-all duration-700">
-                  <h3 className="text-xl font-bold mb-6 tracking-tight" style={{ color: 'var(--text-primary)' }}>{step.title}</h3>
-                  <p className="text-sm leading-relaxed mb-10 min-h-[60px] transition-colors" style={{ color: 'var(--text-secondary)' }}>{step.body}</p>
+                <div className="glass-card rounded-2xl md:rounded-[2rem] lg:rounded-[3rem] p-5 md:p-6 lg:p-8 h-full flex flex-col transition-all duration-700">
+                  <h3 className="text-lg lg:text-xl font-bold mb-3 lg:mb-4 tracking-tight" style={{ color: 'var(--text-primary)' }}>{step.title}</h3>
+                  <p className="text-xs lg:text-sm leading-relaxed mb-4 lg:mb-6 min-h-[48px] lg:min-h-[60px] transition-colors" style={{ color: 'var(--text-secondary)' }}>{step.body}</p>
                   <div className="mt-auto group-hover:scale-105 transition-transform duration-500">
                     {step.visual}
                   </div>
