@@ -33,16 +33,38 @@ const featureList = [
 
 export const Features: React.FC = () => {
   return (
-    <section id="services" className="py-16 px-6 relative z-10 overflow-hidden">
-      <div className="max-w-7xl mx-auto glass-card rounded-[3.5rem] p-8 md:p-14">
-
+    <section id="services" className="py-8 sm:py-16 px-6 relative z-10 overflow-hidden">
+      <div className="max-w-7xl mx-auto glass-card rounded-2xl sm:rounded-[3.5rem] p-4 sm:p-8 md:p-14">
 
         <ScrollReveal/>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Mobile: compact 2-col grid, no descriptions */}
+        <div className="sm:hidden grid grid-cols-2 gap-3">
+          {featureList.map((f, i) => (
+            <ScrollReveal key={i} delay={i * 60}>
+              <div className="glass-card p-4 rounded-xl text-center">
+                <div className="w-10 h-10 mx-auto flex items-center justify-center rounded-lg mb-2 shadow-md" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--accent)' }}>
+                  {f.icon}
+                </div>
+                <h3 className="text-xs font-bold tracking-tight" style={{ color: 'var(--text-primary)' }}>{f.title}</h3>
+              </div>
+            </ScrollReveal>
+          ))}
+          <ScrollReveal delay={featureList.length * 60}>
+            <div className="rounded-xl p-4 flex flex-col items-center justify-center bg-[#D4FF3F] text-[#1A1A1A] shadow-[0_0_40px_rgba(212,255,63,0.15)]">
+              <h3 className="text-sm font-black tracking-tight text-center leading-tight mb-2">Ready to automate?</h3>
+              <div className="flex items-center gap-2 font-black uppercase text-[10px] tracking-widest">
+                Let's go <ArrowRight size={14} />
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+
+        {/* Desktop: full cards */}
+        <div className="hidden sm:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {featureList.map((f, i) => (
             <ScrollReveal key={i} delay={i * 80}>
-              <div className="group glass-card p-10 rounded-[3rem] transition-all duration-500">
+              <div className="group glass-card p-8 md:p-10 rounded-[3rem] transition-all duration-500">
                 <div className="w-16 h-16 flex items-center justify-center rounded-2xl mb-10 transition-all duration-500 shadow-xl" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--accent)' }}>
                   <div className="group-hover:scale-110 transition-transform duration-300">
                     {f.icon}

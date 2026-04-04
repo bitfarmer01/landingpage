@@ -74,23 +74,41 @@ export const Process: React.FC = () => {
   ];
 
   return (
-    <section id="process" className="py-16 px-6 relative z-10">
-      <div className="max-w-7xl mx-auto glass-card rounded-[3.5rem] p-10 md:p-20">
+    <section id="process" className="py-8 sm:py-16 px-6 relative z-10">
+      <div className="max-w-7xl mx-auto glass-card rounded-2xl sm:rounded-[3.5rem] p-5 sm:p-10 md:p-20">
         <ScrollReveal>
-          <div className="text-center mb-24">
-            <div className="text-[10px] font-bold tracking-[0.3em] uppercase mb-6" style={{ color: 'var(--accent)' }}>Our Engineering Cycle</div>
-            <h2 className="text-4xl md:text-7xl font-bold mb-8 tracking-tighter" style={{ color: 'var(--text-primary)' }}>Built to Outperform.</h2>
-            <p className="max-w-2xl mx-auto text-xl leading-relaxed font-medium" style={{ color: 'var(--text-secondary)' }}>
+          <div className="text-center mb-8 sm:mb-16 md:mb-24">
+            <div className="text-[10px] font-bold tracking-[0.3em] uppercase mb-4 sm:mb-6" style={{ color: 'var(--accent)' }}>Our Engineering Cycle</div>
+            <h2 className="text-2xl sm:text-4xl md:text-7xl font-bold mb-4 sm:mb-8 tracking-tighter" style={{ color: 'var(--text-primary)' }}>Built to Outperform.</h2>
+            <p className="hidden sm:block max-w-2xl mx-auto text-xl leading-relaxed font-medium" style={{ color: 'var(--text-secondary)' }}>
               Custom automation isn't just a tool, it's a fundamental shift in how your business scales.
             </p>
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        {/* Mobile: compact list */}
+        <div className="sm:hidden space-y-3">
+          {steps.map((step, idx) => (
+            <ScrollReveal key={idx} delay={idx * 60}>
+              <div className="glass-card rounded-xl p-4 flex items-start gap-4">
+                <div className="w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center text-xs font-black" style={{ background: 'var(--accent-dim)', color: 'var(--accent)' }}>
+                  {String(idx + 1).padStart(2, '0')}
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold tracking-tight" style={{ color: 'var(--text-primary)' }}>{step.title.replace(/^\d+\.\s*/, '')}</h3>
+                  <p className="text-xs leading-relaxed mt-1" style={{ color: 'var(--text-secondary)' }}>{step.body}</p>
+                </div>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+
+        {/* Desktop: full cards with visuals */}
+        <div className="hidden sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {steps.map((step, idx) => (
             <ScrollReveal key={idx} delay={idx * 100} className="h-full">
               <div className="group relative h-full">
-                <div className="glass-card rounded-[3rem] p-10 h-full flex flex-col transition-all duration-700">
+                <div className="glass-card rounded-[3rem] p-8 md:p-10 h-full flex flex-col transition-all duration-700">
                   <h3 className="text-xl font-bold mb-6 tracking-tight" style={{ color: 'var(--text-primary)' }}>{step.title}</h3>
                   <p className="text-sm leading-relaxed mb-10 min-h-[60px] transition-colors" style={{ color: 'var(--text-secondary)' }}>{step.body}</p>
                   <div className="mt-auto group-hover:scale-105 transition-transform duration-500">
